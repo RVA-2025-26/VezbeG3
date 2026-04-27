@@ -8,5 +8,5 @@ import rva.model.Dobavljac;
 
 public interface DobavljacRepository extends JpaRepository<Dobavljac, Long> {
 
-	List<Dobavljac> findByNazivLike(String naziv);
+	List<Dobavljac> findByNazivContainingIgnoreCase(String naziv);
 	}

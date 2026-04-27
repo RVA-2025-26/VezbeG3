@@ -28,10 +28,13 @@ public class StavkaPorudzbine {
 	@ManyToOne
 	@JoinColumn(name = "porudzbina")
 	private Porudzbina porudzbina;
+	
+	public StavkaPorudzbine() {
+		
+	}
 
-	public StavkaPorudzbine(long id, int redniBroj, double kolicina, String jedinicaMere, double cena) {
+	public StavkaPorudzbine(int redniBroj, double kolicina, String jedinicaMere, double cena) {
 		super();
-		this.id = id;
 		this.redniBroj = redniBroj;
 		this.kolicina = kolicina;
 		this.jedinicaMere = jedinicaMere;

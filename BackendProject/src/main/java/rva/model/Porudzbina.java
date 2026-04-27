@@ -3,6 +3,7 @@ package rva.model;
 import java.util.Date;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,12 +30,15 @@ public class Porudzbina {
 	@JoinColumn(name = "dobavljac")
 	private Dobavljac dobavljac;
 	
-	@OneToMany(mappedBy = "porudzbina")
+	@OneToMany(mappedBy = "porudzbina", cascade = CascadeType.ALL)
 	private List<StavkaPorudzbine> stavkePorudzbine;
+	
+	public Porudzbina() {
+		
+	}
 
-	public Porudzbina(long id, Date datumPorudzbine, Date datumIsporuke, double iznos, boolean placeno) {
+	public Porudzbina(Date datumPorudzbine, Date datumIsporuke, double iznos, boolean placeno) {
 		super();
-		this.id = id;
 		this.datumPorudzbine = datumPorudzbine;
 		this.datumIsporuke = datumIsporuke;
 		this.iznos = iznos;

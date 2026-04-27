@@ -27,6 +27,11 @@ public class StavkaPorudzbineServiceImpl implements StavkaPorudzbineService {
 	public boolean existsById(long id) {
 		return repo.existsById(id);
 	}
+	
+	@Override
+	public Optional<StavkaPorudzbine> findById(long id) {
+		return repo.findById(id);
+	}
 
 	@Override
 	public StavkaPorudzbine create(StavkaPorudzbine body) {
