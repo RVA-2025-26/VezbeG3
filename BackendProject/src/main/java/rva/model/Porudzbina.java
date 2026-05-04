@@ -17,24 +17,23 @@ import jakarta.persistence.SequenceGenerator;
 public class Porudzbina {
 
 	@Id
-	@SequenceGenerator(name = "porudzbina_seq", sequenceName = "porudzbina_seq",
-	allocationSize = 1)
+	@SequenceGenerator(name = "porudzbina_seq", sequenceName = "porudzbina_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "porudzbina_seq")
 	private long id;
 	private Date datumPorudzbine;
 	private Date datumIsporuke;
 	private double iznos;
 	private boolean placeno;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "dobavljac")
 	private Dobavljac dobavljac;
-	
+
 	@OneToMany(mappedBy = "porudzbina", cascade = CascadeType.ALL)
 	private List<StavkaPorudzbine> stavkePorudzbine;
-	
+
 	public Porudzbina() {
-		
+
 	}
 
 	public Porudzbina(Date datumPorudzbine, Date datumIsporuke, double iznos, boolean placeno) {
@@ -83,6 +82,14 @@ public class Porudzbina {
 
 	public void setPlaceno(boolean placeno) {
 		this.placeno = placeno;
+	}
+
+	public Dobavljac getDobavljac() {
+		return dobavljac;
+	}
+
+	public void setDobavljac(Dobavljac dobavljac) {
+		this.dobavljac = dobavljac;
 	}
 
 }
